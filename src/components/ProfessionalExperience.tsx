@@ -56,28 +56,27 @@ const ProfessionalExperience: React.FC = () => {
 
     return (
         <section className="mb-12">
-            <h2 className="section-title">Professional Experience</h2>
+            <h2 className="section-title text-black dark:text-white">Professional Experience</h2>
             <div className="space-y-8">
                 {experiences.map((exp, index) => (
                     <div key={index} className="experience-item">
-                        <div className="card">
+                        <div className="card bg-white dark:bg-neutral-900">
                             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                                 <div>
-                                    <h3 className="text-xl font-semibold text-gray-800">
+                                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
                                         <strong>{exp.title}</strong> | {exp.company}
                                     </h3>
-                                    <p className="text-gray-600 italic">{exp.period} | {exp.type}</p>
+                                    <p className="text-gray-600 dark:text-gray-400 italic">{exp.period} | {exp.type}</p>
                                 </div>
                             </div>
 
                             {exp.technicalAchievements && (
                                 <div className="mb-6">
-                                    <h4 className="text-lg font-semibold text-gray-700 mb-3">Technical Achievements:</h4>
-                                    <ul className="space-y-2">
+                                    <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-3">Technical Achievements:</h4>
+                                    <ul className="space-y-2 list-none">
                                         {exp.technicalAchievements.map((achievement, idx) => (
                                             <li key={idx} className="achievement-item">
-                                                <div className="achievement-bullet"></div>
-                                                <span className="text-gray-700">{achievement}</span>
+                                                <span className="text-gray-700 dark:text-gray-300">{achievement}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -86,12 +85,11 @@ const ProfessionalExperience: React.FC = () => {
 
                             {exp.technicalProjects && (
                                 <div className="mb-6">
-                                    <h4 className="text-lg font-semibold text-gray-700 mb-3">Technical Projects:</h4>
-                                    <ul className="space-y-2">
+                                    <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-3">Technical Projects:</h4>
+                                    <ul className="space-y-2 list-none">
                                         {exp.technicalProjects.map((project, idx) => (
                                             <li key={idx} className="achievement-item">
-                                                <div className="achievement-bullet"></div>
-                                                <span className="text-gray-700">{project}</span>
+                                                <span className="text-gray-700 dark:text-gray-300">{project}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -100,12 +98,11 @@ const ProfessionalExperience: React.FC = () => {
 
                             {exp.technicalLeadership && (
                                 <div>
-                                    <h4 className="text-lg font-semibold text-gray-700 mb-3">Technical Leadership:</h4>
-                                    <ul className="space-y-2">
+                                    <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-3">Technical Leadership:</h4>
+                                    <ul className="space-y-2 list-none">
                                         {exp.technicalLeadership.map((leadership, idx) => (
                                             <li key={idx} className="achievement-item">
-                                                <div className="achievement-bullet"></div>
-                                                <span className="text-gray-700">{leadership}</span>
+                                                <span className="text-gray-700 dark:text-gray-300">{leadership}</span>
                                             </li>
                                         ))}
                                     </ul>

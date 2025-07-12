@@ -2,6 +2,7 @@ import React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import ThemeToggle from '../components/ThemeToggle'
 
 export const metadata: Metadata = {
   title: 'Farouk Alsajee',
@@ -15,8 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white text-black font-light antialiased">
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10">
+      <body className="bg-white text-black font-light antialiased dark:bg-black dark:text-white">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10 dark:bg-black/95 dark:border-white/10">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <Link href="/" className="text-2xl font-light tracking-wide hover:opacity-70 transition-opacity relative group">
@@ -40,6 +41,9 @@ export default function RootLayout({
                 <Link href="/projects" className="hover:opacity-70 transition-opacity">Projects</Link>
                 <Link href="/resume" className="hover:opacity-70 transition-opacity">Resume</Link>
                 <Link href="/contact" className="hover:opacity-70 transition-opacity">Contact</Link>
+              </div>
+              <div className="flex items-center">
+                <ThemeToggle />
               </div>
               <div className="md:hidden">
                 <button className="text-black">

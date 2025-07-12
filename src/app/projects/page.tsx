@@ -64,14 +64,14 @@ export default function ProjectsPage() {
     }
 
     return (
-        <div className="min-h-screen py-24 px-6">
+        <div className="min-h-screen py-24 px-6 bg-white dark:bg-black">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-20 animate-fade-in-up">
-                    <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-8">
+                    <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-8 text-black dark:text-white">
                         Projects
                     </h1>
-                    <p className="text-xl font-light text-black/70 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-xl font-light text-black/70 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                         A collection of my recent work, showcasing full-stack development,
                         cloud architecture, and innovative solutions.
                     </p>
@@ -85,12 +85,12 @@ export default function ProjectsPage() {
                             className="group animate-fade-in-up hover-lift"
                             style={{ animationDelay: `${index * 0.1}s` }}
                         >
-                            <div className="border border-black/10 p-8 h-full flex flex-col">
+                            <div className="border border-black/10 dark:border-white/20 p-8 h-full flex flex-col bg-white dark:bg-neutral-900">
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-normal mb-4 group-hover:opacity-70 transition-opacity">
+                                    <h3 className="text-xl font-normal mb-4 group-hover:opacity-70 transition-opacity text-black dark:text-white">
                                         {repo.name}
                                     </h3>
-                                    <p className="text-black/60 font-light mb-6 leading-relaxed flex-1">
+                                    <p className="text-black/60 dark:text-gray-400 font-light mb-6 leading-relaxed flex-1">
                                         {repo.description || 'No description available'}
                                     </p>
 
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
                                                 {repo.topics.slice(0, 4).map((topic) => (
                                                     <span
                                                         key={topic}
-                                                        className="text-xs font-light px-3 py-1 border border-black/20 text-black/60"
+                                                        className="text-xs font-light px-3 py-1 border border-black/20 dark:border-white/20 text-black/60 dark:text-gray-400"
                                                     >
                                                         {topic}
                                                     </span>
@@ -111,7 +111,7 @@ export default function ProjectsPage() {
                                 </div>
 
                                 <div className="flex items-center justify-between pt-6 border-t border-black/10">
-                                    <div className="flex items-center space-x-4 text-sm text-black/50">
+                                    <div className="flex items-center space-x-4 text-sm text-black/50 dark:text-gray-400">
                                         {repo.language && (
                                             <span className="font-light">{repo.language}</span>
                                         )}
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
                                         href={repo.html_url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-sm font-light hover:opacity-70 transition-opacity"
+                                        className="text-sm font-light hover:opacity-70 transition-opacity text-black dark:text-white"
                                     >
                                         View →
                                     </a>
@@ -135,7 +135,7 @@ export default function ProjectsPage() {
 
                 {/* Call to Action */}
                 <div className="text-center mt-20 animate-fade-in-up">
-                    <p className="text-lg font-light text-black/70 mb-8">
+                    <p className="text-lg font-light text-black/70 dark:text-gray-300 mb-8">
                         Interested in seeing more of my work or collaborating on a project?
                     </p>
                     <a

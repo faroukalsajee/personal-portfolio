@@ -21,16 +21,16 @@ const Education: React.FC = () => {
 
     return (
         <section className="mb-12">
-            <h2 className="section-title">Education & Certifications</h2>
+            <h2 className="section-title text-black dark:text-white">Education & Certifications</h2>
             <div className="grid md:grid-cols-1 gap-4">
                 {education.map((edu, index) => (
-                    <div key={index} className="card">
+                    <div key={index} className="card bg-white dark:bg-neutral-900">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                             <div>
-                                <h3 className="text-lg font-semibold text-gray-800">{edu.degree}</h3>
-                                <p className="text-gray-600">{edu.institution}</p>
+                                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">{edu.degree}</h3>
+                                <p className="text-gray-600 dark:text-gray-400">{edu.institution}</p>
                             </div>
-                            <p className="text-gray-500 font-medium">{edu.year}</p>
+                            <p className="text-gray-500 dark:text-gray-300 font-medium">{edu.year}</p>
                         </div>
                     </div>
                 ))}
