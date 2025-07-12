@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 const NAME = "Farouk Alsajee";
@@ -9,23 +9,28 @@ export default function AnimatedHeader() {
     const [hovered, setHovered] = useState(false);
     const [hasAnimated, setHasAnimated] = useState(false);
 
-    useEffect(() => {
-        setHovered(false);
+    // On click/tap, reveal then auto-hide
+    const handleClick = (e: React.MouseEvent) => {
         setHovered(true);
-        const hideTimeout = setTimeout(() => {
-            setHovered(false);
-            setHasAnimated(true);
-        }, (letters.length - 2) * 50 * 2);
-        return () => clearTimeout(hideTimeout);
-    }, []);
+        setHasAnimated(true);
+        setTimeout(() => setHovered(false), 2000 + (letters.length - 2) * 80);
+        // Always navigate to home
+        // Let Link handle navigation
+    };
 
-    const handleMouseEnter = () => hasAnimated && setHovered(true);
-    const handleMouseLeave = () => hasAnimated && setHovered(false);
+    // On desktop, allow hover as well
+    const handleMouseEnter = () => {
+        if (hasAnimated) setHovered(true);
+    };
+    const handleMouseLeave = () => {
+        if (hasAnimated) setHovered(false);
+    };
 
     return (
         <Link
             href="/"
-            className="text-lg font-light tracking-wide hover:opacity-70 transition-opacity relative group"
+            className="text-lg font-light tracking-wide relative group"
+            onClick={handleClick}
         >
             <span
                 className="relative cursor-pointer inline-block align-middle font-light text-lg"
@@ -40,8 +45,8 @@ export default function AnimatedHeader() {
                             className={`inline-block transition-all duration-300 font-light text-lg${char === "A" ? " ml-2" : ""}`}
                             style={{
                                 transitionDelay: hovered
-                                    ? `${i * 50}ms`
-                                    : `${(letters.length - 2 - i) * 50}ms`,
+                                    ? `${i * 80}ms`
+                                    : `${(letters.length - 2 - i) * 80}ms`,
                                 opacity: hovered ? 1 : 0,
                                 transform: hovered ? "translateY(0)" : "translateY(10px)",
                             }}
