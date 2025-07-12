@@ -19,8 +19,21 @@ export default function RootLayout({
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
-              <Link href="/" className="text-2xl font-light tracking-wide hover:opacity-70 transition-opacity">
-                Farouk Alsajee
+              <Link href="/" className="text-2xl font-light tracking-wide hover:opacity-70 transition-opacity relative group">
+                <span className="relative cursor-pointer inline-block align-middle">
+                  <span className="inline-block">F</span>
+                  <span className="absolute top-0 left-full flex whitespace-nowrap pointer-events-none">
+                    {"arouk Alsajee".split("").map((char, i, arr) => (
+                      <span
+                        key={i}
+                        className={`opacity-0 group-hover:opacity-100 transition-opacity${char === 'A' ? ' ml-2' : ''}`}
+                        style={{ transitionDelay: `${i * 0.07}s, ${(arr.length - 1 - i) * 0.07}s` }}
+                      >
+                        {char === ' ' ? '' : char}
+                      </span>
+                    ))}
+                  </span>
+                </span>
               </Link>
               <div className="hidden md:flex space-x-12 text-sm tracking-wide">
                 <Link href="/" className="hover:opacity-70 transition-opacity">Home</Link>

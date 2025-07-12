@@ -12,7 +12,7 @@ export default function Home() {
           <div className="animate-fade-in-up">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight mb-8 leading-none">
               Farouk<br />
-              <span className="font-normal">Alsajee</span>
+              Alsajee
             </h1>
           </div>
 
@@ -92,9 +92,9 @@ export default function Home() {
               Interested in collaborating on a project or discussing opportunities?
               I'd love to hear from you.
             </p>
-            <Link href="/contact" className="btn btn-primary hover-lift">
+            <a href="mailto:faroukalsajee@gmail.com" className="btn btn-primary hover-lift">
               Get In Touch
-            </Link>
+            </a>
           </div>
         </div>
       </section>

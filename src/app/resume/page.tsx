@@ -30,7 +30,6 @@ export default function ResumePage() {
                         <a href="https://github.com/faroukalsajee" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
                             GitHub
                         </a>
-                        <span>Vancouver, BC</span>
                     </div>
                 </div>
 

@@ -4,8 +4,12 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt } from 'react-icons/fa
 const Header: React.FC = () => {
     return (
         <header className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">
-                FAROUK ALSAJEE
+            <h1 className="text-4xl font-bold text-gray-800 mb-4 relative group">
+                <span className="cursor-pointer">F
+                    <span className="absolute left-1/2 -translate-x-1/2 mt-2 w-max px-3 py-1 rounded bg-black text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity z-10 whitespace-nowrap">
+                        Farouk Alsajee
+                    </span>
+                </span>
             </h1>
             <h2 className="text-xl font-semibold text-primary-600 mb-6">
                 Software Engineer | Business Strategist
@@ -39,11 +43,6 @@ const Header: React.FC = () => {
                     <FaGithub />
                     <span>GitHub</span>
                 </a>
-
-                <div className="flex items-center gap-2">
-                    <FaMapMarkerAlt />
-                    <span>Vancouver, BC</span>
-                </div>
             </div>
         </header>
     )
