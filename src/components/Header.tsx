@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa'
 
 const NAME = 'Farouk Alsajee';
 const letters = NAME.split('');
 
 const Header: React.FC = () => {
-    console.log('[Header] component file loaded');
     const [hovered, setHovered] = useState(false);
     const [hasAnimated, setHasAnimated] = useState(false);
 
     useEffect(() => {
-        console.log('[Header] useEffect mount: setHovered(false)');
         setHovered(false); // Always start hidden
         const revealTimeout = setTimeout(() => {
-            console.log('[Header] setHovered(true) - reveal');
             setHovered(true); // Reveal
             const hideTimeout = setTimeout(() => {
-                console.log('[Header] setHovered(false) - hide, setHasAnimated(true)');
                 setHovered(false); // Hide
                 setHasAnimated(true);
             }, 3000 + (letters.length - 2) * 80);
@@ -25,18 +21,12 @@ const Header: React.FC = () => {
         return () => clearTimeout(revealTimeout);
     }, []);
 
-    useEffect(() => {
-        console.log(`[Header] hovered: ${hovered}, hasAnimated: ${hasAnimated}`);
-    }, [hovered, hasAnimated]);
-
     // Only allow hover after initial animation
     const handleMouseEnter = () => {
-        console.log('[Header] handleMouseEnter', { hasAnimated });
-        hasAnimated && setHovered(true);
+        if (hasAnimated) setHovered(true);
     };
     const handleMouseLeave = () => {
-        console.log('[Header] handleMouseLeave', { hasAnimated });
-        hasAnimated && setHovered(false);
+        if (hasAnimated) setHovered(false);
     };
 
     return (

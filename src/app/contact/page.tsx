@@ -1,36 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        // Simulate form submission
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setSubmitStatus('success');
-            setFormData({ name: '', email: '', subject: '', message: '' });
-        }, 2000);
-    };
-
     return (
         <div className="min-h-screen py-24 px-6 bg-white dark:bg-black">
             <div className="max-w-4xl mx-auto">
@@ -44,8 +16,8 @@ export default function ContactPage() {
                 <div className="flex justify-center">
                     <div className="animate-fade-in-up text-center" style={{ animationDelay: '0.1s', maxWidth: '400px', width: '100%' }}>
                         <p className="text-lg font-light leading-relaxed text-black/70 dark:text-gray-300 mb-12">
-                            I'm always interested in hearing about new opportunities and exciting projects.
-                            Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                            I&apos;m always interested in hearing about new opportunities and exciting projects.
+                            Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
                         </p>
 
                         <div className="space-y-6">

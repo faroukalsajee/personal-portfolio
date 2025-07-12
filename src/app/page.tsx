@@ -90,7 +90,7 @@ export default function Home() {
             </h2>
             <p className="text-xl font-light mb-12 text-black/70 dark:text-gray-300 max-w-2xl mx-auto">
               Interested in collaborating on a project or discussing opportunities?
-              I'd love to hear from you.
+              I&apos;d love to hear from you.
             </p>
             <a href="mailto:faroukalsajee@gmail.com" className="btn btn-primary hover-lift">
               Get In Touch

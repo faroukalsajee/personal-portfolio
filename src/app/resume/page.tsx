@@ -1,11 +1,3 @@
-import Header from '../../components/Header'
-import TechnicalSummary from '../../components/TechnicalSummary'
-import TechnicalSkills from '../../components/TechnicalSkills'
-import ProfessionalExperience from '../../components/ProfessionalExperience'
-import TechnicalProjects from '../../components/TechnicalProjects'
-import Education from '../../components/Education'
-import AdditionalInfo from '../../components/AdditionalInfo'
-
 export default function ResumePage() {
     return (
         <div className="min-h-screen py-24 px-6 bg-white dark:bg-black">
@@ -198,7 +190,7 @@ export default function ResumePage() {
                 {/* Call to Action */}
                 <div className="text-center mt-20 animate-fade-in-up">
                     <p className="text-lg font-light text-black/70 dark:text-gray-300 mb-8">
-                        Interested in working together? Let's discuss how I can contribute to your project.
+                        Interested in working together? Let&apos;s discuss how I can contribute to your project.
                     </p>
                     <a href="/contact" className="btn btn-primary hover-lift">
                         Get In Touch

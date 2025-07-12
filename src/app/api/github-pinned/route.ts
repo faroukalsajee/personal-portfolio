@@ -1,5 +1,15 @@
 import { NextResponse } from 'next/server';
 
+type RepoNode = {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  stargazerCount: number;
+  primaryLanguage?: { name: string };
+  repositoryTopics?: { nodes: { topic: { name: string } }[] };
+};
+
 export async function GET() {
   const query = `
     query {
@@ -54,14 +64,14 @@ export async function GET() {
     const repos = data.data?.user?.pinnedItems?.nodes || [];
     
     // Transform the data to match the expected structure
-    const transformedRepos = repos.map((repo: any) => ({
+    const transformedRepos = repos.map((repo: RepoNode) => ({
       id: repo.id,
       name: repo.name,
       description: repo.description,
       html_url: repo.url,
       stargazers_count: repo.stargazerCount,
       language: repo.primaryLanguage?.name || null,
-      topics: repo.repositoryTopics?.nodes?.map((node: any) => node.topic.name) || []
+      topics: repo.repositoryTopics?.nodes?.map((node) => node.topic.name) || []
     }));
 
     return NextResponse.json(transformedRepos);
