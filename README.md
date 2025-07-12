@@ -1,3 +1,16 @@
+# Farouk Alsajee – Personal Portfolio
+
+[Live Site →](https://faroukalsajee.com)
+
+A modern, responsive portfolio built with Next.js, featuring:
+
+- Animated header with left-to-right reveal and right-to-left hide
+- Smooth dark/light mode toggle with a custom lightbulb switch
+- Fully responsive and accessible design
+- Clean, elegant UI inspired by top design references
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
