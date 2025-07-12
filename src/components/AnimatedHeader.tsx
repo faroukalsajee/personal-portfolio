@@ -25,19 +25,19 @@ export default function AnimatedHeader() {
     return (
         <Link
             href="/"
-            className="text-2xl font-light tracking-wide hover:opacity-70 transition-opacity relative group"
+            className="text-lg font-light tracking-wide hover:opacity-70 transition-opacity relative group"
         >
             <span
-                className="relative cursor-pointer inline-block align-middle font-light text-3xl"
+                className="relative cursor-pointer inline-block align-middle font-light text-lg"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <span className="inline-block font-light text-3xl">F</span>
+                <span className="inline-block font-light text-lg">F</span>
                 <span className="absolute top-0 left-full flex whitespace-nowrap pointer-events-none">
                     {letters.slice(1).map((char, i) => (
                         <span
                             key={i}
-                            className={`inline-block transition-all duration-300 font-light text-3xl${char === "A" ? " ml-2" : ""}`}
+                            className={`inline-block transition-all duration-300 font-light text-lg${char === "A" ? " ml-2" : ""}`}
                             style={{
                                 transitionDelay: hovered
                                     ? `${i * 50}ms`
