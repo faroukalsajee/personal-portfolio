@@ -1,5 +1,15 @@
 import { NextResponse } from 'next/server';
 
+type GitHubRepo = {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+  stargazers_count: number;
+  language: string | null;
+  topics: string[];
+};
+
 export async function GET() {
   try {
     // Use the public REST API instead of GraphQL
@@ -15,10 +25,10 @@ export async function GET() {
       return NextResponse.json([], { status: 500 });
     }
 
-    const repos = await res.json();
+    const repos = await res.json() as GitHubRepo[];
     
     // Transform the data to match the expected structure
-    const transformedRepos = repos.map((repo: any) => ({
+    const transformedRepos = repos.map((repo: GitHubRepo) => ({
       id: repo.id,
       name: repo.name,
       description: repo.description,
