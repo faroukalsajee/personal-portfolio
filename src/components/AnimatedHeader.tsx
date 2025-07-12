@@ -10,7 +10,7 @@ export default function AnimatedHeader() {
     const [hasAnimated, setHasAnimated] = useState(false);
 
     // On click/tap, reveal then auto-hide
-    const handleClick = (e: React.MouseEvent) => {
+    const handleClick = () => {
         setHovered(true);
         setHasAnimated(true);
         setTimeout(() => setHovered(false), 2000 + (letters.length - 2) * 80);
