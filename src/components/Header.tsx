@@ -1,19 +1,52 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt } from 'react-icons/fa'
 
 const NAME = 'Farouk Alsajee';
 const letters = NAME.split('');
 
 const Header: React.FC = () => {
+    console.log('[Header] component file loaded');
     const [hovered, setHovered] = useState(false);
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+        console.log('[Header] useEffect mount: setHovered(false)');
+        setHovered(false); // Always start hidden
+        const revealTimeout = setTimeout(() => {
+            console.log('[Header] setHovered(true) - reveal');
+            setHovered(true); // Reveal
+            const hideTimeout = setTimeout(() => {
+                console.log('[Header] setHovered(false) - hide, setHasAnimated(true)');
+                setHovered(false); // Hide
+                setHasAnimated(true);
+            }, 3000 + (letters.length - 2) * 80);
+            return () => clearTimeout(hideTimeout);
+        }, 100);
+        return () => clearTimeout(revealTimeout);
+    }, []);
+
+    useEffect(() => {
+        console.log(`[Header] hovered: ${hovered}, hasAnimated: ${hasAnimated}`);
+    }, [hovered, hasAnimated]);
+
+    // Only allow hover after initial animation
+    const handleMouseEnter = () => {
+        console.log('[Header] handleMouseEnter', { hasAnimated });
+        hasAnimated && setHovered(true);
+    };
+    const handleMouseLeave = () => {
+        console.log('[Header] handleMouseLeave', { hasAnimated });
+        hasAnimated && setHovered(false);
+    };
+
     return (
         <>
             <header className="text-center mb-12">
                 <h1 className="text-4xl font-bold text-gray-800 mb-4 relative group">
                     <span
                         className="cursor-pointer"
-                        onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
                     >
                         F
                         <span
@@ -26,8 +59,8 @@ const Header: React.FC = () => {
                                     className="inline-block transition-all duration-300"
                                     style={{
                                         transitionDelay: hovered
-                                            ? `${i * 40}ms` // left-to-right on hover
-                                            : `${((letters.length - 2) - i) * 40}ms`, // right-to-left on unhover
+                                            ? `${i * 80}ms` // left-to-right on hover
+                                            : `${((letters.length - 2) - i) * 80}ms`, // right-to-left on unhover
                                         opacity: hovered ? 1 : 0,
                                         transform: hovered ? 'translateY(0)' : 'translateY(10px)'
                                     }}
