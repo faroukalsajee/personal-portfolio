@@ -86,7 +86,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight text-black dark:text-white">
-              Let's Connect
+              Let&apos;s Connect
             </h2>
             <p className="text-xl font-light mb-12 text-black/70 dark:text-gray-300 max-w-2xl mx-auto">
               Interested in collaborating on a project or discussing opportunities?
