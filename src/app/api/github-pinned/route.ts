@@ -1,23 +1,52 @@
 import { NextResponse } from 'next/server';
 
-type GitHubRepo = {
-  id: number;
+type RepoNode = {
+  id: string;
   name: string;
-  description: string | null;
-  html_url: string;
-  stargazers_count: number;
-  language: string | null;
-  topics: string[];
+  description: string;
+  url: string;
+  stargazerCount: number;
+  primaryLanguage?: { name: string };
+  repositoryTopics?: { nodes: { topic: { name: string } }[] };
 };
 
 export async function GET() {
+  const query = `
+    query {
+      user(login: "faroukalsajee") {
+        pinnedItems(first: 6, types: REPOSITORY) {
+          nodes {
+            ... on Repository {
+              id
+              name
+              description
+              url
+              stargazerCount
+              primaryLanguage {
+                name
+              }
+              repositoryTopics(first: 10) {
+                nodes {
+                  topic {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
   try {
-    // Use the public REST API instead of GraphQL
-    const res = await fetch('https://api.github.com/users/faroukalsajee/repos?sort=updated&per_page=6', {
+    const res = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'User-Agent': 'personal-portfolio'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
       },
+      body: JSON.stringify({ query }),
     });
 
     if (!res.ok) {
@@ -25,17 +54,21 @@ export async function GET() {
       return NextResponse.json([], { status: 500 });
     }
 
-    const repos = await res.json() as GitHubRepo[];
-    
-    // Transform the data to match the expected structure
-    const transformedRepos = repos.map((repo: GitHubRepo) => ({
+    const data = await res.json();
+    if (data.errors) {
+      console.error('GraphQL errors:', data.errors);
+      return NextResponse.json([], { status: 500 });
+    }
+
+    const repos = data.data?.user?.pinnedItems?.nodes || [];
+    const transformedRepos = repos.map((repo: RepoNode) => ({
       id: repo.id,
       name: repo.name,
       description: repo.description,
-      html_url: repo.html_url,
-      stargazers_count: repo.stargazers_count,
-      language: repo.language,
-      topics: repo.topics || []
+      html_url: repo.url,
+      stargazers_count: repo.stargazerCount,
+      language: repo.primaryLanguage?.name || null,
+      topics: repo.repositoryTopics?.nodes?.map((node) => node.topic.name) || []
     }));
 
     return NextResponse.json(transformedRepos);
