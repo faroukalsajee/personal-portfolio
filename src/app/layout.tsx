@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta property="og:image" content="/og-image.svg" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
