@@ -171,3 +171,8 @@ body,
 .dark .card {
   background: #171717;
 }
+
+/*! Utility: disables all transitions */
+.transition-none {
+  transition: none !important;
+}
