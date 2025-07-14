@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta property="og:image" content="/og-image.svg" />
+        <meta property="og:image" content="https://www.faroukalsajee.com/og-image.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
