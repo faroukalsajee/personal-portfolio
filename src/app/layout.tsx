@@ -20,6 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta property="og:image" content="https://www.faroukalsajee.com/og-image.png" />
+        <meta name="description" content="Software Engineer | Business Strategist with 5+ years of experience bridging technology and business goals. Proven track record of building scalable web applications and enterprise solutions, driving product innovation, and aligning technical execution with business strategy." />
+        <meta property="og:description" content="Software Engineer | Business Strategist with 5+ years of experience bridging technology and business goals. Proven track record of building scalable web applications and enterprise solutions, driving product innovation, and aligning technical execution with business strategy." />
         <script
           dangerouslySetInnerHTML={{
             __html: `
